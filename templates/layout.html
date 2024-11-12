@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="supported-color-schemes" content="light dark">
+
+  <meta name="author" content="Maintainers of aio-libs projects">
+  <meta name="fediverse:creator" content="@webknjaz@mastodon.social">
+  <meta name="copyright" content="Maintainers of aio-libs projects">
+  <meta name="description" content="{{ config.PROJECT.name }}: an asyncio ecosystem">
+  <meta name="robots" content="all">
+
+  <meta name="p:domain_verify" content="">
+
+  <link rel="profile" href="http://gmpg.org/xfn/11">
+
+  <link rel="me" href="https://bsky.app/profile/aio-libs.org">
+  <link rel="me" href="https://github.com/sponsors/webknjaz">
+  <link rel="me" href="https://github.com/aio-libs">
+  <link rel="me" href="https://www.linkedin.com/in/webknjaz">
+  <link rel="me" href="https://mastodon.social/@webknjaz">
+  <link rel="me" href="https://matrix.to/#/%23aio-libs-space:matrix.org">
+  <link rel="me" href="https://stackoverflow.com/users/595220/webknjaz">
+  <link rel="me" href="https://twitter.com/webknjaz">
+
+  <link rel="prefetch">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+
+  <link rel="alternate" type="application/rss+xml" title="RSS Feed for {{ config.PROJECT.name }}" href="/feed.xml">
+  <link rel="stylesheet" href="{{ get_pygments_stylesheet() | url }}">
+  <link rel="stylesheet" href="{{ '/static/style.css' | url }}">
+
+  <link href="//fonts.googleapis.com/css?family=Fira+Code&display=swap" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Montserrat:500,500italic,300,300italic&display=swap" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Playfair+Display:500,500italic,400,400italic&display=swap" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=PT+Mono&display=swap" rel="stylesheet" type="text/css">
+
+  <title>{% block title %}Welcome{% endblock %} — {{ config.PROJECT.name }}</title>
+
+  {% if this.datamodel.filename is not none -%}
+    {# NOTE: Lektor-Open-Graph tracebacks if filename is None #}
+    {{- open_graph.render_tags(this) | indent(width=2) }}
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@webknjaz">
+  <meta name="twitter:creator" content="@webknjaz">
+  {% endif -%}
+</head>
+<body>
+  <header>
+    <h1><a href="{{ '/' | url }}">{{ config.PROJECT.name }}</a></h1>
+    <nav>
+      <ul class="nav navbar-nav">
+        <li{% if this._path[:5] in ('/', '/blog') %} class="active"{% endif
+          %}><a href="{{ '/' | url }}">Write-ups</a></li>
+        {% for href, title in [
+          ['/projects', 'What we do'],
+          ['/about', 'Who we are']
+        ] %}
+          <li{% if this.is_child_of(href) %} class="active"{% endif
+            %}><a href="{{ href | url }}">{{ title }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </header>
+  <div class="page">
+    {% block body %}{% endblock %}
+  </div>
+  <footer>
+    © Copyright 2024 by maintainers of aio-libs projects
+  </footer>
+</body>

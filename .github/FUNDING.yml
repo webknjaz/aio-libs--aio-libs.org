@@ -1,0 +1,8 @@
+---
+
+github:
+- Dreamsorcerer
+- webknjaz
+tidelift: pypi/aiohttp  # A single Tidelift platform-name/package-name e.g., npm/babel
+
+...

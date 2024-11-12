@@ -1,0 +1,21 @@
+[project]
+name = @aio-libs: an asyncio ecosystem
+# NOTE: `included_assets` is necessary to override exclusions of folders
+# NOTE: with leading underscores in Lektor, like the article slug `__init__`.
+# Ref: https://github.com/lektor/lektor/issues/1198#issuecomment-2474642728
+included_assets = __init__
+locale = en_US
+
+# Refs:
+# * https://github.com/lektor/lektor-atom/issues/4
+# * https://github.com/lektor/lektor-atom/issues/21
+url = https://aio-libs.org
+# NOTE: breaks RSS/atom
+# url_style = relative
+
+[packages]
+lektor-markdown-highlighter = 0.3.2
+lektor-atom = 0.4.0
+lektor-read-full-post = 0.3
+Lektor-Open-Graph = 1b4
+lektor-markdown-admonition = 0.3.1
